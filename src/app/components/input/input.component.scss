@@ -1,5 +1,26 @@
 .input-container {
-    display: flex;
-    flex-direction: column;
-    background-color: yellow;
-}
+    padding: 8px;
+    border-radius: 8px;
+    margin: 0 10%;
+    border: solid 1px black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+    .input-label {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 4px;
+        display: block;
+      }
+      
+      .input-field {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 1rem;
+      }
+  }
+
+  .input-container:focus-within {
+    transform: scale(1.01);
+  }
+  
