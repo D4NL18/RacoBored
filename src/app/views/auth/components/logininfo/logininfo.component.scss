@@ -17,8 +17,23 @@
     .input-logininfo {
         width: 100%;
     }
-    .button-logininfo {
+
+    .container-button-logininfo {
+
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        padding: 0 20%;
+        align-items: center;
+        gap: 1rem;
+
+        .button-logininfo {
+            width: 100%;
+            padding: 0 20%;
+        }
+
+        a {
+            font-size: 1rem;
+            color: black;
+        }
     }
 }
