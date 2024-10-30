@@ -1,9 +1,9 @@
-<form class="login-info-container">
+<form [formGroup]="loginForm" class="login-info-container">
     <h1 class="login-info-title">LOGIN</h1>
-    <app-input placeholder="tonho@email.com" id="email" label="E-mail" type="email" class="input-logininfo" />
-    <app-input id="password" label="Senha" type="password" class="input-logininfo" />
+    <app-input placeholder="tonho@email.com" inputName="email" label="E-mail" type="email" formControlName="email" class="input-logininfo" />
+    <app-input inputName="password" label="Senha" type="password" class="input-logininfo" formControlName="password" />
     <div class="container-button-logininfo">
-        <app-button text="Entrar" class="button-logininfo"></app-button>
+        <app-button text="Entrar" class="button-logininfo" (click)="submit()"></app-button>
         <a href="register">Não possui conta? Cadastre-se agora!</a>
     </div>
 </form>
