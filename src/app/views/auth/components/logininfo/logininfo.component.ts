@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { InputComponent } from '../../../../components/input/input.component';
 import { ButtonComponent } from '../../../../components/button/button.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LoginService } from '../../../../services/login.service';
+import { LoginService } from '../../../../services/auth/login/login.service'
 import {MatIconModule} from '@angular/material/icon';
 
 @Component({

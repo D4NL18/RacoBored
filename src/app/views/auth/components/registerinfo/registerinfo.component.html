@@ -1,10 +1,33 @@
-<form class="register-info-container">
-    <h1 class="register-info-title">Register</h1>
-    <app-input placeholder="tonho" id="name" label="Nome" type="text" class="input-registerinfo" />
-    <app-input placeholder="tonho@email.com" id="email" label="E-mail" type="email" class="input-registerinfo" />
-    <app-input id="password" label="Senha" type="password" class="input-registerinfo" />
-    <div class="container-button-registerinfo">
-        <app-button text="Cadastrar" class="button-registerinfo"></app-button>
-        <a href="">Já possui uma conta? Clique aqui para fazer login</a>
+<form class="register-info-form">
+    <div class="register-info-header">
+        <h1 class="register-info-title">Bem-vindo!!</h1>
     </div>
+    <div class="register-info-container">
+        <div class="register-info-box left">
+            <app-input 
+                placeholder="tonho" 
+                id="name" label="Nome" 
+                type="text" 
+                class="input-registerinfo" />
+            <app-input 
+                placeholder="tonho@email.com" 
+                id="email" 
+                label="E-mail" 
+                type="email" 
+                class="input-registerinfo" />
+            <app-input 
+                id="password" 
+                label="Senha" 
+                type="password" 
+                class="input-registerinfo" />
+            <div class="container-button-registerinfo">
+                <app-button text="Cadastrar" class="button-registerinfo" />
+                <a href="">Já possui uma conta? Clique aqui para fazer login</a>
+            </div>
+        </div>
+        <div class="register-info-box right">
+            <mat-icon class="custom-icon">sentiment_neutral</mat-icon>
+        </div>
+    </div>
+
 </form>
