@@ -1,0 +1,17 @@
+<div class="navbar-container" [ngClass]="{'collapsed': isCollapsed, 'not-colapsed': !isCollapsed}">
+    <button mat-icon-button (click)="toggleSidebar()" class="navbar-button">
+      <mat-icon class="menu-icon">menu</mat-icon>
+    </button>
+    <div class="menu-items">
+      <a mat-button *ngFor="let item of menuItems" [href]="item.link">
+        <mat-icon class="icons">{{ item.icon }}</mat-icon>
+        <span class="icon-text" *ngIf="!isCollapsed">{{ item.label }}</span>
+      </a>
+    </div>
+    <div class="icon-neutral-container">
+        <mat-icon *ngIf="!isCollapsed" class="icon-neutral">sentiment_neutral</mat-icon>
+    </div>
+    <div class="icon-logout-container">
+        <a href=""><mat-icon class="icon-logout">logout</mat-icon><span *ngIf="!isCollapsed" class="logout-text">Sair</span></a>
+    </div>
+  </div>

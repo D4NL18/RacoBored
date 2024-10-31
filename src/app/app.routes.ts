@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './views/auth/login/login.component';
 import { RegisterComponent } from './views/auth/register/register.component';
-import { TasksHistoryComponent } from './views/tasks-history/tasks-history.component';
+import { AddTaskComponent } from './views/add-task/add-task.component';
 
 export const routes: Routes = [
     {
@@ -13,7 +13,7 @@ export const routes: Routes = [
         component: RegisterComponent
     },
     {
-        path: "tasksHistory",
-        component: TasksHistoryComponent
+        path: "addTask",
+        component: AddTaskComponent
     }
 ];

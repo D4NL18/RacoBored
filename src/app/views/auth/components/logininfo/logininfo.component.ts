@@ -20,7 +20,7 @@ export class LogininfoComponent {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
       next: () => {
         console.log("sucesso")
-        this.router.navigate(['/tasksHistory']);
+        this.router.navigate(['/addTask']);
       },
       error: (err) =>{
         console.log("Erro: ", err)

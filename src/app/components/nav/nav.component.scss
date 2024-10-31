@@ -1,0 +1,101 @@
+$icons-size: 2.5rem;
+
+.navbar-container {
+    width: 15rem;
+    height: 100%;
+    background-color: #1F1F1F;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s;
+    
+
+    .navbar-button {
+        background-color: transparent;
+        color: white;
+        border: 0;
+        height: 10%;
+
+        .menu-icon {
+            font-size: $icons-size;
+            width: $icons-size;
+            height: $icons-size;
+        }
+    }
+    .menu-items {
+        height: 30%;
+
+        
+
+        a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            .icons {
+                font-size: $icons-size;
+                width: $icons-size;
+                height: $icons-size;
+            }
+            .icon-text {
+                padding: 0 0.5rem;
+            }
+          }
+        a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+
+        
+      }
+
+      .icon-neutral-container {
+        height: 55%;
+        display: flex;
+        align-items: center;
+
+        .icon-neutral {
+            font-size: 12rem;
+            width: 12rem;
+            height: 12rem;
+        }
+      }
+
+      .icon-logout-container {
+        height: 5%;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        border: 0;
+
+        .icon-logout {
+            font-size: 2.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        .logout-text {
+            margin: 0 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+      }
+      
+  }
+
+  .not-colapsed {
+    padding: 0 1rem;
+  }
+  
+  .collapsed {
+    width: 5rem;
+    align-items: center;
+  }
+  
+  
