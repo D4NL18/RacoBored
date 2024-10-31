@@ -2,7 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: gray;
+    background-image: url("../../../assets/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     width: 100vw;
     height: 100vh;
@@ -11,6 +14,10 @@
         display: flex;
         width: 80%;
         height: 80%;
+
+        .teste {
+            width: 50%;
+        }
         
 
         .content-login {

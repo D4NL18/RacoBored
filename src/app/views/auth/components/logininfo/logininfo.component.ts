@@ -3,11 +3,12 @@ import { InputComponent } from '../../../../components/input/input.component';
 import { ButtonComponent } from '../../../../components/button/button.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../../../services/login.service';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-logininfo',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, ReactiveFormsModule],
+  imports: [InputComponent, ButtonComponent, ReactiveFormsModule, MatIconModule],
   providers: [LoginService],
   templateUrl: './logininfo.component.html',
   styleUrl: './logininfo.component.scss'

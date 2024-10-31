@@ -1,9 +1,31 @@
-<form [formGroup]="loginForm" class="login-info-container">
-    <h1 class="login-info-title">LOGIN</h1>
-    <app-input placeholder="tonho@email.com" inputName="email" label="E-mail" type="email" formControlName="email" class="input-logininfo" />
-    <app-input inputName="password" label="Senha" type="password" class="input-logininfo" formControlName="password" />
-    <div class="container-button-logininfo">
-        <app-button text="Entrar" class="button-logininfo" (click)="submit()"></app-button>
-        <a href="register">Não possui conta? Cadastre-se agora!</a>
+<form [formGroup]="loginForm" class="login-info-form">
+    <div class="login-info-header">
+        <h1 class="login-info-title">Bem-Vindo!!</h1>
+    </div>
+    <div class="login-info-container">
+        <div class="login-info-box left">
+            <app-input 
+                placeholder="tonho@email.com" 
+                inputName="email" 
+                label="E-mail" 
+                type="email"
+                formControlName="email" class="input-logininfo" />
+            <app-input 
+                inputName="password" 
+                label="Senha" 
+                type="password" 
+                class="input-logininfo"
+                formControlName="password" />
+            <div class="container-button-logininfo">
+                <app-button 
+                    text="Entrar" 
+                    class="button-logininfo" 
+                    (click)="submit()"></app-button>
+                <a href="register">Não possui conta? Cadastre-se agora!</a>
+            </div>
+        </div>
+        <div class="login-info-box right">
+            <mat-icon class="custom-icon">sentiment_neutral</mat-icon>
+        </div>
     </div>
 </form>
