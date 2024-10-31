@@ -1,0 +1,40 @@
+<form [formGroup]="registerForm" class="register-info-form">
+    <div class="register-info-header">
+        <h1 class="register-info-title">Bem-vindo!!</h1>
+    </div>
+    <div class="register-info-container">
+        <div class="register-info-box left">
+            <app-input 
+                placeholder="tonho" 
+                formControlName="username"
+                inputName="username" 
+                label="Nome" 
+                type="text" 
+                class="input-registerinfo" />
+            <app-input 
+                placeholder="tonho@email.com" 
+                formControlName="email"
+                inputName="email" 
+                label="E-mail" 
+                type="email" 
+                class="input-registerinfo" />
+            <app-input 
+                formControlName="password"
+                inputName="password" 
+                label="Senha" 
+                type="password" 
+                class="input-registerinfo" />
+            <div class="container-button-registerinfo">
+                <app-button 
+                    text="Cadastrar" 
+                    class="button-registerinfo" 
+                    (click)="submit()" />
+                <a href="">Já possui uma conta? Clique aqui para fazer login</a>
+            </div>
+        </div>
+        <div class="register-info-box right">
+            <mat-icon class="custom-icon">sentiment_neutral</mat-icon>
+        </div>
+    </div>
+
+</form>

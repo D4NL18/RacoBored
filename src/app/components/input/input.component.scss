@@ -1,0 +1,26 @@
+.input-container {
+    padding: 0.5rem;
+    
+
+    .input-label {
+        font-size: 1.25rem;
+        color: white;
+        margin: 0 0 0.5rem 0.5rem;
+        display: block;
+      }
+      
+      .input-field {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 1rem;
+        padding: 1.5rem 1rem;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 1.25rem;
+      }
+  }
+
+  .input-container:focus-within {
+    transform: scale(1.01);
+  }
+  
