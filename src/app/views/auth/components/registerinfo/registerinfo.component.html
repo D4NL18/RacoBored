@@ -1,4 +1,4 @@
-<form class="register-info-form">
+<form [formGroup]="registerForm" class="register-info-form">
     <div class="register-info-header">
         <h1 class="register-info-title">Bem-vindo!!</h1>
     </div>
@@ -6,22 +6,29 @@
         <div class="register-info-box left">
             <app-input 
                 placeholder="tonho" 
-                id="name" label="Nome" 
+                formControlName="username"
+                inputName="username" 
+                label="Nome" 
                 type="text" 
                 class="input-registerinfo" />
             <app-input 
                 placeholder="tonho@email.com" 
-                id="email" 
+                formControlName="email"
+                inputName="email" 
                 label="E-mail" 
                 type="email" 
                 class="input-registerinfo" />
             <app-input 
-                id="password" 
+                formControlName="password"
+                inputName="password" 
                 label="Senha" 
                 type="password" 
                 class="input-registerinfo" />
             <div class="container-button-registerinfo">
-                <app-button text="Cadastrar" class="button-registerinfo" />
+                <app-button 
+                    text="Cadastrar" 
+                    class="button-registerinfo" 
+                    (click)="submit()" />
                 <a href="">Já possui uma conta? Clique aqui para fazer login</a>
             </div>
         </div>
