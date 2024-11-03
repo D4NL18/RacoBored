@@ -10,7 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
-  isCollapsed = false;
+  isCollapsed = true;
 
   menuItems = [
     { label: 'Tasks', icon: 'task', link: 'addTask' },

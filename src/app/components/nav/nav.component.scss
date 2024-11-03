@@ -1,6 +1,7 @@
 $icons-size: 2.5rem;
 
 .navbar-container {
+    position: static;
     width: 15rem;
     height: 100%;
     background-color: #1F1F1F;
@@ -65,18 +66,20 @@ $icons-size: 2.5rem;
         height: 5%;
         display: flex;
         align-items: center;
-        padding: 0 1rem;
+        margin: 1rem;
         border: 0;
 
         .icon-logout {
             font-size: 2.5rem;
             width: 2.5rem;
             height: 2.5rem;
+            color: #FF1E1E;
         }
         .logout-text {
             margin: 0 0.5rem;
             font-size: 1rem;
             font-weight: 500;
+            color: #FF1E1E;
         }
 
         a {

@@ -1,0 +1,15 @@
+$size: 4rem;
+
+.reroll-button {
+    background-color: transparent;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    margin: 1rem 0;
+
+    .reroll-icon {
+        font-size: $size;
+        width: $size;
+        height: $size;
+    }
+}

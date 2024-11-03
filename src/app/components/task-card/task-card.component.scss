@@ -1,0 +1,66 @@
+.task-card-container {
+    background-color: #5A56BC;
+    width: 25vw;
+    height: 20rem;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+
+    .task-card-title-container {
+        text-align: center;
+        color: white;
+        margin: 0 0 0.5rem 0;
+
+        h2 {
+            margin: 0; 
+        }
+    }
+
+    .task-card-text-container {
+        text-align: justify;
+        color: white;
+        overflow-y: auto;
+        padding-right: 0.5rem;
+
+        // Estilo do Scrollbar para Firefox
+        scrollbar-width: thin;
+        scrollbar-color: #a09cd1 #5A56BC;
+
+        // Estilos para navegadores WebKit (Chrome, Edge, Safari)
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #5A56BC;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #a09cd1;
+            border-radius: 10px;
+            border: 2px solid #5A56BC;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .task-card-container {
+        width: 100%;
+        height: 15rem;
+        margin: 1rem 0;
+    }
+
+    .task-card-title-container {
+        h2 {
+            font-size: 1.5rem;
+        }
+        
+    }
+}
