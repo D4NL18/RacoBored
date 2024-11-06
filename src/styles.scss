@@ -11,4 +11,23 @@
     font-family: 'Montserrat';
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Montserrat', "Helvetica Neue", sans-serif; }
+
+
+::-webkit-scrollbar {
+    width: 8px; /* Largura do scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent; /* Cor do track */
+    border-radius: 1rem; /* Borda arredondada no track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #5A56BC; /* Cor do thumb */
+    border-radius: 1rem; /* Borda arredondada no thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6b68be; /* Cor do thumb ao passar o mouse */
+  }

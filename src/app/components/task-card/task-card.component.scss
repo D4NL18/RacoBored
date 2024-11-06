@@ -27,26 +27,6 @@
         color: white;
         overflow-y: auto;
         padding-right: 0.5rem;
-
-        // Estilo do Scrollbar para Firefox
-        scrollbar-width: thin;
-        scrollbar-color: #a09cd1 #5A56BC;
-
-        // Estilos para navegadores WebKit (Chrome, Edge, Safari)
-        &::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        &::-webkit-scrollbar-track {
-            background: #5A56BC;
-            border-radius: 10px;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: #a09cd1;
-            border-radius: 10px;
-            border: 2px solid #5A56BC;
-        }
     }
 }
 

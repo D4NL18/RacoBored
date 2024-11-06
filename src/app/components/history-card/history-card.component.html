@@ -1,0 +1,14 @@
+<button class="history-card-container" [ngClass]="{'open': isOpen}" (click)="handleClick()">
+    @if(isOpen) {
+        <div class="history-card-header">
+            <p class="history-card-title">{{name}}</p>
+            <mat-icon class="check-icon ">keyboard_arrow_up</mat-icon>
+        </div>
+        <p class="history-card-text">{{text}}</p>
+    }@else {
+        <p class="history-card-title">{{name}}</p>
+        <mat-icon class="check-icon ">keyboard_arrow_down</mat-icon>
+    }
+</button>
+
+

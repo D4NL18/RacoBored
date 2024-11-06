@@ -1,0 +1,80 @@
+.profile-entire-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: white;
+
+    .profile-container {
+        background-color: #313338;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+        padding: 0 2rem;
+
+        .user-info-container {
+            display: flex;
+            justify-content: space-evenly;
+
+            .profile-picture-container {
+                width: 12rem;
+                img {
+                    width: 100%
+                }
+            }
+
+            .divider {
+                width: 1rem;
+                height: 100%;
+                background-color: #5A56BC;
+                border-radius: 1rem;
+            }
+
+            .user-info {
+                width: 65%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+
+                h1 {
+                    font-weight: 600;
+                    font-size: 2.5rem;
+                    margin: 0.5rem 0;
+                }
+                p {
+                    font-size: 1.5rem;
+                }
+                .points {
+                    font-weight: 600;
+                }
+            }
+
+        }
+        
+
+        .user-history {
+            height: 65vh;
+            // background-color: aqua;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h2 {
+                font-size: 2.25rem;
+                font-weight: 600;
+            }
+
+            .history-card-container {
+                // background-color: burlywood;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                overflow: auto;
+                padding: 0 1rem;
+            }
+        }
+
+    }
+}
