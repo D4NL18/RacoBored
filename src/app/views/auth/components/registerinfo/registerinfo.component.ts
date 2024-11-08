@@ -5,11 +5,12 @@ import {MatIconModule} from '@angular/material/icon';
 import { RegisterService } from '../../../../services/auth/register/register.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registerinfo',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, MatIconModule, ReactiveFormsModule],
+  imports: [InputComponent, ButtonComponent, MatIconModule, ReactiveFormsModule, MatSnackBarModule],
   templateUrl: './registerinfo.component.html',
   styleUrl: './registerinfo.component.scss'
 })
@@ -17,7 +18,7 @@ export class RegisterinfoComponent {
 
   registerForm!: FormGroup;
 
-  constructor(private registerService: RegisterService, private router: Router) {
+  constructor(private registerService: RegisterService, private router: Router, private snackBar: MatSnackBar) {
     this.registerForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
@@ -33,9 +34,13 @@ export class RegisterinfoComponent {
         this.router.navigate(['']);
       },
       error: (err) => {
-        console.log("Erro: ", err)
+        console.log("Erro: ", err);
+        this.snackBar.open("Erro ao fazer registro. Verifique suas credenciais e tente novamente.", "Fechar", {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
       }
-    })
+    });
   }
-
 }

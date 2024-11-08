@@ -5,16 +5,26 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { LoginService } from '../../../../services/auth/login/login.service'
 import {MatIconModule} from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-logininfo',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, ReactiveFormsModule, MatIconModule],
+  imports: [InputComponent, ButtonComponent, ReactiveFormsModule, MatIconModule, MatSnackBarModule],
   providers: [LoginService],
   templateUrl: './logininfo.component.html',
   styleUrl: './logininfo.component.scss'
 })
 export class LogininfoComponent {
+
+  constructor(private loginService: LoginService, private router: Router,  private snackBar: MatSnackBar) {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    })
+  }
+
+  loginForm!: FormGroup;
 
   submit() {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
@@ -22,18 +32,14 @@ export class LogininfoComponent {
         console.log("sucesso")
         this.router.navigate(['/addTask']);
       },
-      error: (err) =>{
-        console.log("Erro: ", err)
+      error: (err) => {
+        console.log("Erro: ", err);
+        this.snackBar.open("Erro ao fazer login. Verifique suas credenciais e tente novamente.", "Fechar", {
+          duration: 3000,  // Duração em milissegundos
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
       }
-    })
-  }
-
-  loginForm!: FormGroup;
-
-  constructor(private loginService: LoginService, private router: Router) {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
-    })
+    });
   }
 }
