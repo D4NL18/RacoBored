@@ -1,20 +1,54 @@
 <div class="addTask-entire-page">
-    <app-nav />
+    <app-nav></app-nav>
     <div class="addTask-container">
         <div class="addTask-title-container">
-            <h1 class="addTask-title">Escolha uma Tarefa</h1>
+            <h1 class="addTask-title">
+                {{ pendingTask ? 'Concluir Tarefa' : taskAssigned ? 'Sua Tarefa' : 'Escolha uma Tarefa' }}
+            </h1>
         </div>
         <div class="addTask-cards-container">
             <div class="addTask-cards-box">
-                <app-task-card [title]="task1.title" [text]="task1.text" />
-                <app-task-card [title]="task2.title" [text]="task2.text" />
+                <!-- Exibe apenas a tarefa pendente ou a atribuída -->
+                <app-task-card 
+                    *ngIf="pendingTask && !taskAssigned"
+                    [title]="pendingTask.nome" 
+                    [text]="pendingTask.descricao" 
+                    [class.selected]="selectedTaskId === pendingTask.task_id" 
+                    (click)="selectTask(pendingTask.task_id)">
+                </app-task-card>
+                
+                <!-- Exibe duas tarefas aleatórias se não houver tarefa pendente -->
+                <app-task-card 
+                    *ngIf="!pendingTask && !taskAssigned"
+                    [title]="task1.nome" 
+                    [text]="task1.descricao" 
+                    [class.selected]="selectedTaskId === task1.task_id" 
+                    (click)="selectTask(task1.task_id)">
+                </app-task-card>
+                
+                <app-task-card 
+                    *ngIf="!pendingTask && !taskAssigned"
+                    [title]="task2.nome" 
+                    [text]="task2.descricao" 
+                    [class.selected]="selectedTaskId === task2.task_id" 
+                    (click)="selectTask(task2.task_id)">
+                </app-task-card>
+
+                <!-- Exibe a tarefa selecionada após atribuição -->
+                <app-task-card 
+                    *ngIf="taskAssigned"
+                    [title]="pendingTask.nome" 
+                    [text]="pendingTask.descricao">
+                </app-task-card>
             </div>
-            <app-reroll (onClick)="reroll()" />
+            <app-reroll *ngIf="!pendingTask && !taskAssigned" (click)="reroll()"></app-reroll>
         </div>
         <div class="addTask-button-container">
-            <app-button text="Adicionar" />
+            <!-- Substitui o botão "Adicionar" por "Concluir" se houver uma tarefa pendente -->
+            <app-button 
+                [text]="pendingTask ? 'Concluir' : 'Adicionar'" 
+                (click)="pendingTask ? completeTask() : assignTask()">
+            </app-button>
         </div>
-        
     </div>
 </div>
-

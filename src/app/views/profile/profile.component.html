@@ -1,24 +1,24 @@
 <div class="profile-entire-page">
-    <app-nav />
+    <app-nav></app-nav>
     <div class="profile-container">
-        <div class="user-info-container">
-            <div class="profile-picture-container">
-                <img [src]="user.img" alt="">
-            </div>
-            <div class="divider"></div>
-            <div class="user-info">
-                <h1>{{user.name}}</h1>
-                <p>E-mail: {{user.email}}</p>
-                <p class="points">Pontos: {{user.points}}pts</p>
-            </div>
+      <div class="user-info-container">
+        <div class="profile-picture-container">
+          <img [src]="user.img" alt="Profile Picture">
         </div>
-        <div class="user-history">
-            <h2>Histórico de Atividades</h2>
-            <div class="history-card-container">
-                @for (task of history; track $index) {
-                    <app-history-card [name]="task.name" [text]="task.text"/>
-                }
-            </div>
+        <div class="divider"></div>
+        <div class="user-info">
+          <h1>{{user.name}}</h1>
+          <p>E-mail: {{user.email}}</p>
+          <p class="points">Pontos: {{user.points}}pts</p>
         </div>
+      </div>
+  
+      <div class="user-history">
+        <h2>Histórico de Atividades</h2>
+        <div class="history-card-container">
+          <app-history-card *ngFor="let task of history" [name]="task.name" [text]="task.text"></app-history-card>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  

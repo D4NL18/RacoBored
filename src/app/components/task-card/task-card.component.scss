@@ -11,6 +11,8 @@
     box-sizing: border-box;
     overflow: hidden;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    border: 0;
+
 
     .task-card-title-container {
         text-align: center;
@@ -29,6 +31,13 @@
         padding-right: 0.5rem;
     }
 }
+
+
+.task-card-container:hover {
+    border: solid 2px black
+}
+
+
 
 @media screen and (max-width: 768px) {
     .task-card-container {

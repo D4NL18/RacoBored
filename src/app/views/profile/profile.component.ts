@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NavComponent } from "../../components/nav/nav.component";
 import { HistoryCardComponent } from "../../components/history-card/history-card.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [NavComponent, HistoryCardComponent],
+  imports: [NavComponent, HistoryCardComponent, CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })

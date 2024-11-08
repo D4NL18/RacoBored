@@ -47,6 +47,11 @@
     }
 }
 
+.selected {
+    border: solid 2px black;
+    border-radius: 1.5rem;
+}
+
 @media screen and (max-width: 768px) {
 
     .addTask-container {
