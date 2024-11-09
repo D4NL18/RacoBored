@@ -10,7 +10,11 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) {}
 
+  getUserProfile(userId: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/user_profile/${userId}`);
+  }
+
   getUserHistory(userId: number): Observable<{ history: any[] }> {
-    return this.httpClient.get<{ history: any[] }>(`${this.apiUrl}/user_history/${userId}`);
+    return this.httpClient.get<{ history: any[] }>(`${this.apiUrl}/task_history/${userId}`);
   }
 }

@@ -26,6 +26,7 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
     // Verifica se o usuário tem tarefas pendentes
     this.checkPendingTask();
+    this.reroll()
   }
 
   loadRandomTasks() {
@@ -41,7 +42,7 @@ export class AddTaskComponent implements OnInit {
     this.tasksService.pendingTask(this.userId).subscribe(response => {
       if (response.task) {
         this.pendingTask = response.task;
-        this.taskAssigned = true;  // Usuário já tem uma tarefa pendente
+        this.taskAssigned = true;
       } else {
         this.loadRandomTasks();
       }
