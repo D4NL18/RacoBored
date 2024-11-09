@@ -11,22 +11,27 @@ export class TasksService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //Get de task aleatória
   generateTask(): Observable<{ tasks: any[], message: string }> {
     return this.httpClient.get<{ tasks: any[], message: string }>(`${this.apiUrl}/random_tasks`);
   }
 
+  //Get das tasks pendentes
   pendingTask(user_id: string): Observable<{ task: any }> {
     return this.httpClient.get<{ task: any }>(`${this.apiUrl}/pending_task/${user_id}`);
   }
 
+  //Get histórico do usuário
   taskHistory(user_id: string): Observable<{ history: any[], message: string }> {
     return this.httpClient.get<{ history: any[], message: string }>(`${this.apiUrl}/task_history/${user_id}`);
   }
 
+  //Post para enviar tarefa para usuário
   assignTask(user_id: string, task_id: number): Observable<{ message: string }> {
     return this.httpClient.post<{ message: string }>(`${this.apiUrl}/assign_task/${user_id}/${task_id}`, {});
   }
 
+  //Post para setar tarefa como concluída
   completeTask(user_id: string, task_id: number): Observable<{ message: string, tasks: any[] }> {
     return this.httpClient.post<{ message: string, tasks: any[] }>(`${this.apiUrl}/complete_task/${user_id}/${task_id}`, {});
   }

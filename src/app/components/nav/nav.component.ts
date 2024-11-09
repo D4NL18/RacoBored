@@ -15,7 +15,6 @@ export class NavComponent {
   menuItems = [
     { label: 'Tasks', icon: 'task', link: 'addTask' },
     { label: 'Profile', icon: 'person', link: 'profile' },
-    { label: 'Groups', icon: 'groups', link: 'groups' },
   ];
 
   toggleSidebar() {

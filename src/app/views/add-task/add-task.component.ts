@@ -14,21 +14,21 @@ import { CommonModule } from '@angular/common';
   styleUrl: './add-task.component.scss'
 })
 export class AddTaskComponent implements OnInit {
-  task1: any = {};  // Armazena a primeira tarefa aleatória
-  task2: any = {};  // Armazena a segunda tarefa aleatória
+  task1: any = {};
+  task2: any = {};
   userId = sessionStorage.getItem('user_id') || "";
-  selectedTaskId: number | null = null; // Armazena o ID da tarefa selecionada
-  pendingTask: any = null;  // Armazena a tarefa pendente
-  taskAssigned: boolean = false;  // Indica se uma tarefa foi atribuída
+  selectedTaskId: number | null = null;
+  pendingTask: any = null; 
+  taskAssigned: boolean = false;
 
   constructor(private tasksService: TasksService) {}
 
+  //Quando abrir a página, verifica se o usuário já possui tarefas em andamento ou se deve gerar novas
   ngOnInit() {
-    // Verifica se o usuário tem tarefas pendentes
     this.checkPendingTask();
     this.reroll()
   }
-
+  //Carrega novas tarefas
   loadRandomTasks() {
     this.tasksService.generateTask().subscribe(response => {
       if (response.tasks && response.tasks.length >= 2) {
@@ -37,7 +37,7 @@ export class AddTaskComponent implements OnInit {
       }
     });
   }
-
+  //Checa se o usuário possui tarefas
   checkPendingTask() {
     this.tasksService.pendingTask(this.userId).subscribe(response => {
       if (response.task) {
@@ -48,38 +48,35 @@ export class AddTaskComponent implements OnInit {
       }
     });
   }
-
+  //Botão reroll
   reroll() {
-    // Gera duas novas tarefas aleatórias
     this.loadRandomTasks();
   }
-
+  //Seleciona task para adicionar
   selectTask(taskId: number) {
-    // Seleciona a tarefa, mas não a atribui ainda
     this.selectedTaskId = taskId;
   }
 
+  //Adiciona task
   assignTask() {
     if (this.selectedTaskId !== null) {
-      // Atribui a tarefa selecionada ao usuário
       this.tasksService.assignTask(this.userId, this.selectedTaskId).subscribe(response => {
         console.log(response.message);
         this.pendingTask = { task_id: this.selectedTaskId, nome: this.selectedTaskId === this.task1.task_id ? this.task1.nome : this.task2.nome, descricao: this.selectedTaskId === this.task1.task_id ? this.task1.descricao : this.task2.descricao };
-        this.taskAssigned = true; // Marca a tarefa como atribuída
+        this.taskAssigned = true;
       });
     } else {
       console.log("Nenhuma tarefa selecionada");
     }
   }
 
+  //Marca task como concluída
   completeTask() {
     if (this.pendingTask) {
-      // Atualiza o status da tarefa para concluído
       this.tasksService.completeTask(this.userId, this.pendingTask.task_id).subscribe(response => {
         console.log(response.message);
-        this.pendingTask = null; // Reseta a tarefa pendente após concluir
-        this.taskAssigned = false; // Reseta a flag de tarefa atribuída
-        // Após concluir, carrega novas tarefas aleatórias
+        this.pendingTask = null;
+        this.taskAssigned = false;
         this.loadRandomTasks();
       });
     }

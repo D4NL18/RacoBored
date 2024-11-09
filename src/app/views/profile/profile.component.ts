@@ -14,9 +14,10 @@ import { UserService } from '../../services/user/user.service';
 export class ProfileComponent implements OnInit {
   user: any = {};
   history: any[] = [];
+  imgUrl: string = "https://static-00.iconduck.com/assets.00/profile-icon-512x512-w0uaq4yr.png"
 
   constructor(private userService: UserService) {}
-
+  //Ao entrar na página, ira sincronizar as informações do usuário (nome, email e pontos) e o histórico
   ngOnInit(): void {
     const userId = sessionStorage.getItem('user_id');
     if (userId) {

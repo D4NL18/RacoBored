@@ -25,7 +25,7 @@ export class LogininfoComponent {
   }
 
   loginForm!: FormGroup;
-
+  //Envio do login
   submit() {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
       next: () => {
@@ -35,7 +35,7 @@ export class LogininfoComponent {
       error: (err) => {
         console.log("Erro: ", err);
         this.snackBar.open("Erro ao fazer login. Verifique suas credenciais e tente novamente.", "Fechar", {
-          duration: 3000,  // Duração em milissegundos
+          duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'top'
         });

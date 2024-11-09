@@ -44,7 +44,6 @@
             <app-reroll *ngIf="!pendingTask && !taskAssigned" (click)="reroll()"></app-reroll>
         </div>
         <div class="addTask-button-container">
-            <!-- Substitui o botão "Adicionar" por "Concluir" se houver uma tarefa pendente -->
             <app-button 
                 [text]="pendingTask ? 'Concluir' : 'Adicionar'" 
                 (click)="pendingTask ? completeTask() : assignTask()">

@@ -12,6 +12,7 @@ export class RegisterService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //post de criação de usuário
   register(username: string, email: string, password: string) {
     return this.httpClient.post<RegisterResponse>(`${this.apiUrl}/register`, {username, email, password}).pipe(
       tap((value) => {

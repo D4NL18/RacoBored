@@ -26,6 +26,7 @@ export class RegisterinfoComponent {
     })
   }
 
+  //Envio do registro
   submit() {
     console.log("entrou")
     this.registerService.register(this.registerForm.value.username, this.registerForm.value.email, this.registerForm.value.password,).subscribe({
