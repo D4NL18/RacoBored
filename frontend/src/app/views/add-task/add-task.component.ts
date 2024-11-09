@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class AddTaskComponent implements OnInit {
   task1: any = {};  // Armazena a primeira tarefa aleatória
   task2: any = {};  // Armazena a segunda tarefa aleatória
-  userId: number = 1; // Substitua com o ID do usuário autenticado
+  userId = sessionStorage.getItem('user_id') || "";
   selectedTaskId: number | null = null; // Armazena o ID da tarefa selecionada
   pendingTask: any = null;  // Armazena a tarefa pendente
   taskAssigned: boolean = false;  // Indica se uma tarefa foi atribuída
