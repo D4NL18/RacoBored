@@ -16,7 +16,7 @@
     <div class="user-history">
       <h2>Histórico de Atividades</h2>
       <div class="history-card-container">
-        <app-history-card *ngFor="let task of history" [name]="task.nome" [text]="task.descricao"></app-history-card>
+        <app-history-card *ngFor="let task of history" [name]="task.task.name" [text]="task.task.description"></app-history-card>
       </div>
     </div>
   </div>

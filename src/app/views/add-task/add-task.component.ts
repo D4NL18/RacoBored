@@ -4,6 +4,7 @@ import { TaskCardComponent } from '../../components/task-card/task-card.componen
 import { ButtonComponent } from '../../components/button/button.component';
 import { RerollComponent } from '../../components/reroll/reroll.component';
 import { TasksService } from '../../services/tasks/tasks.service'; 
+import { UserTasksService } from '../../services/userTasks/userTasks.service'; 
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -16,12 +17,12 @@ import { CommonModule } from '@angular/common';
 export class AddTaskComponent implements OnInit {
   task1: any = {};
   task2: any = {};
-  userId = sessionStorage.getItem('user_id') || "";
+  userId = sessionStorage.getItem('userId') || "";
   selectedTaskId: number | null = null;
   pendingTask: any = null; 
   taskAssigned: boolean = false;
 
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService, private userTasksService: UserTasksService) {}
 
   //Quando abrir a página, verifica se o usuário já possui tarefas em andamento ou se deve gerar novas
   ngOnInit() {
@@ -39,9 +40,10 @@ export class AddTaskComponent implements OnInit {
   }
   //Checa se o usuário possui tarefas
   checkPendingTask() {
-    this.tasksService.pendingTask(this.userId).subscribe(response => {
-      if (response.task) {
-        this.pendingTask = response.task;
+    this.userTasksService.pendingTask(this.userId).subscribe(response => {
+      if (response.task[0]) {
+        this.pendingTask = response.task[0];
+        console.log(this.pendingTask.task)
         this.taskAssigned = true;
       } else {
         this.loadRandomTasks();
@@ -60,9 +62,9 @@ export class AddTaskComponent implements OnInit {
   //Adiciona task
   assignTask() {
     if (this.selectedTaskId !== null) {
-      this.tasksService.assignTask(this.userId, this.selectedTaskId).subscribe(response => {
+      this.userTasksService.assignTask(this.userId, this.selectedTaskId).subscribe(response => {
         console.log(response.message);
-        this.pendingTask = { task_id: this.selectedTaskId, nome: this.selectedTaskId === this.task1.task_id ? this.task1.nome : this.task2.nome, descricao: this.selectedTaskId === this.task1.task_id ? this.task1.descricao : this.task2.descricao };
+        this.pendingTask = { id: this.selectedTaskId, name: this.selectedTaskId === this.task1.id ? this.task1.name : this.task2.name, description: this.selectedTaskId === this.task1.id ? this.task1.descripton : this.task2.descripton };
         this.taskAssigned = true;
       });
     } else {
@@ -73,7 +75,7 @@ export class AddTaskComponent implements OnInit {
   //Marca task como concluída
   completeTask() {
     if (this.pendingTask) {
-      this.tasksService.completeTask(this.userId, this.pendingTask.task_id).subscribe(response => {
+      this.userTasksService.completeTask(this.pendingTask.id).subscribe(response => {
         console.log(response.message);
         this.pendingTask = null;
         this.taskAssigned = false;

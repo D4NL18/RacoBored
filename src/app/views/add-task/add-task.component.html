@@ -11,34 +11,34 @@
                 <!-- Exibe apenas a tarefa pendente ou a atribuída -->
                 <app-task-card 
                     *ngIf="pendingTask && !taskAssigned"
-                    [title]="pendingTask.nome" 
-                    [text]="pendingTask.descricao" 
-                    [class.selected]="selectedTaskId === pendingTask.task_id" 
-                    (click)="selectTask(pendingTask.task_id)">
+                    [title]="pendingTask.task.name" 
+                    [text]="pendingTask.task.description" 
+                    [class.selected]="selectedTaskId === pendingTask.id" 
+                    (click)="selectTask(pendingTask.id)">
                 </app-task-card>
                 
                 <!-- Exibe duas tarefas aleatórias se não houver tarefa pendente -->
                 <app-task-card 
                     *ngIf="!pendingTask && !taskAssigned"
-                    [title]="task1.nome" 
-                    [text]="task1.descricao" 
-                    [class.selected]="selectedTaskId === task1.task_id" 
-                    (click)="selectTask(task1.task_id)">
+                    [title]="task1.name" 
+                    [text]="task1.description" 
+                    [class.selected]="selectedTaskId === task1.id" 
+                    (click)="selectTask(task1.id)">
                 </app-task-card>
                 
                 <app-task-card 
                     *ngIf="!pendingTask && !taskAssigned"
-                    [title]="task2.nome" 
-                    [text]="task2.descricao" 
-                    [class.selected]="selectedTaskId === task2.task_id" 
-                    (click)="selectTask(task2.task_id)">
+                    [title]="task2.name" 
+                    [text]="task2.description" 
+                    [class.selected]="selectedTaskId === task2.id" 
+                    (click)="selectTask(task2.id)">
                 </app-task-card>
 
                 <!-- Exibe a tarefa selecionada após atribuição -->
                 <app-task-card 
                     *ngIf="taskAssigned"
-                    [title]="pendingTask.nome" 
-                    [text]="pendingTask.descricao">
+                    [title]="pendingTask.task.name" 
+                    [text]="pendingTask.task.description">
                 </app-task-card>
             </div>
             <app-reroll *ngIf="!pendingTask && !taskAssigned" (click)="reroll()"></app-reroll>

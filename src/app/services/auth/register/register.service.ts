@@ -8,18 +8,12 @@ import { tap } from 'rxjs';
 })
 export class RegisterService {
 
-  private apiUrl = 'http://localhost:5000';
+  private apiUrl = 'http://localhost:5000/auth';
 
   constructor(private httpClient: HttpClient) { }
 
   //post de criação de usuário
   register(username: string, email: string, password: string) {
-    return this.httpClient.post<RegisterResponse>(`${this.apiUrl}/register`, {username, email, password}).pipe(
-      tap((value) => {
-        sessionStorage.setItem("username", value.username)
-        sessionStorage.setItem("auth-token", value.token)
-        sessionStorage.setItem("email", value.email)
-      })
-    )
+    return this.httpClient.post<RegisterResponse>(`${this.apiUrl}/register`, {username, email, password});
   }
 }
