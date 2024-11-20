@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 export class TaskCardComponent {
   @Input() title: string = ""
   @Input() text: string = ""
+  @Input() value: number = 0
 }

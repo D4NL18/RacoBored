@@ -43,7 +43,6 @@ export class AddTaskComponent implements OnInit {
     this.userTasksService.pendingTask(this.userId).subscribe(response => {
       if (response.task[0]) {
         this.pendingTask = response.task[0];
-        console.log(this.pendingTask.task)
         this.taskAssigned = true;
       } else {
         this.loadRandomTasks();
@@ -63,8 +62,13 @@ export class AddTaskComponent implements OnInit {
   assignTask() {
     if (this.selectedTaskId !== null) {
       this.userTasksService.assignTask(this.userId, this.selectedTaskId).subscribe(response => {
-        console.log(response.message);
-        this.pendingTask = { id: this.selectedTaskId, name: this.selectedTaskId === this.task1.id ? this.task1.name : this.task2.name, description: this.selectedTaskId === this.task1.id ? this.task1.descripton : this.task2.descripton };
+        this.pendingTask = { 
+          id: this.selectedTaskId, 
+          name: this.selectedTaskId === this.task1.id ? this.task1.name : this.task2.name, 
+          description: this.selectedTaskId === this.task1.id ? this.task1.descripton : this.task2.descripton,
+          value: this.selectedTaskId === this.task1.id ? this.task1.value : this.task2.value 
+
+        };
         this.taskAssigned = true;
       });
     } else {
@@ -76,6 +80,17 @@ export class AddTaskComponent implements OnInit {
   completeTask() {
     if (this.pendingTask) {
       this.userTasksService.completeTask(this.pendingTask.id).subscribe(response => {
+        console.log(response.message);
+        this.pendingTask = null;
+        this.taskAssigned = false;
+        this.loadRandomTasks();
+      });
+    }
+  }
+
+  abandonTask() {
+    if (this.pendingTask) {
+      this.userTasksService.abandonTask(this.pendingTask.id).subscribe(response => {
         console.log(response.message);
         this.pendingTask = null;
         this.taskAssigned = false;

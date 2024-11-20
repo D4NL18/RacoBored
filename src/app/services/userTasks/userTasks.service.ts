@@ -26,6 +26,10 @@ export class UserTasksService {
     return this.httpClient.post<{ message: string, tasks: any[] }>(`${this.apiUrl}/complete-task`, {userTaskId});
   }
 
+  abandonTask(userTaskId: number): Observable<{ message: string, tasks: any[] }> {
+    return this.httpClient.post<{ message: string, tasks: any[] }>(`${this.apiUrl}/abandon-task`, {userTaskId});
+  }
+
   //Get do histórico do usuário
   getUserHistory(userId: number): Observable<{ history: any[] }> {
     return this.httpClient.get<{ history: any[] }>(`${this.apiUrl}/get-user-tasks/${userId}`);

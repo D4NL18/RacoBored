@@ -43,8 +43,18 @@
             // background-color: darkseagreen;
             width: 30%;
             min-width: 16rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            
         }
     }
+}
+
+.give-up-button{
+    background-color: white;
+    color: #313338;
 }
 
 .selected {

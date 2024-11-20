@@ -13,6 +13,7 @@
                     *ngIf="pendingTask && !taskAssigned"
                     [title]="pendingTask.task.name" 
                     [text]="pendingTask.task.description" 
+                    [value]="pendingTask.task.value" 
                     [class.selected]="selectedTaskId === pendingTask.id" 
                     (click)="selectTask(pendingTask.id)">
                 </app-task-card>
@@ -22,6 +23,7 @@
                     *ngIf="!pendingTask && !taskAssigned"
                     [title]="task1.name" 
                     [text]="task1.description" 
+                    [value]="task1.value" 
                     [class.selected]="selectedTaskId === task1.id" 
                     (click)="selectTask(task1.id)">
                 </app-task-card>
@@ -30,6 +32,7 @@
                     *ngIf="!pendingTask && !taskAssigned"
                     [title]="task2.name" 
                     [text]="task2.description" 
+                    [value]="task2.value" 
                     [class.selected]="selectedTaskId === task2.id" 
                     (click)="selectTask(task2.id)">
                 </app-task-card>
@@ -38,12 +41,20 @@
                 <app-task-card 
                     *ngIf="taskAssigned"
                     [title]="pendingTask.task.name" 
-                    [text]="pendingTask.task.description">
+                    [text]="pendingTask.task.description"
+                    [value]="pendingTask.task.value"
+                    >
+                    
                 </app-task-card>
             </div>
             <app-reroll *ngIf="!pendingTask && !taskAssigned" (click)="reroll()"></app-reroll>
         </div>
         <div class="addTask-button-container">
+            <app-button 
+                *ngIf="pendingTask"
+                [text]="'Desistir'" 
+                (click)="abandonTask()">
+            </app-button>
             <app-button 
                 [text]="pendingTask ? 'Concluir' : 'Adicionar'" 
                 (click)="pendingTask ? completeTask() : assignTask()">

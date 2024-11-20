@@ -20,10 +20,10 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService, private userTasksService: UserTasksService) {}
   //Ao entrar na página, ira sincronizar as informações do usuário (nome, email e pontos) e o histórico
   ngOnInit(): void {
-    const userId = sessionStorage.getItem('userId');
+    const userId = parseInt(sessionStorage.getItem('userId') || "0");
     if (userId) {
-      this.userService.getUserProfile(+userId).subscribe(data => {
-        this.user = data.user;
+      this.userService.getUserProfile(userId).subscribe(data => {
+        this.user = data;
       });
 
       this.userTasksService.getUserHistory(+userId).subscribe(data => {
